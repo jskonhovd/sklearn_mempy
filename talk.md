@@ -7,26 +7,27 @@ email: jskonhovd@gatech.edu
 
 # Introduction
 
-## Quick overview Machine Learning
-* Overview
-  * Why should I learn about Machine Learning?
-  * How should I go about learning Machine Learning?
+## Overview
+* What is Machine Learning?
+  * Machine Learning is the study of computer algorithms that improve automatically through experience.
+* How should I go about learning Machine Learning?
+  * MOOCs
+  * Don't get caught up in the implementations. 
+* Tools
+  * WEKA
+  * scikit-learn
 
+# Machine Learning
 
+## Supervised Learning
+* Decision Trees
+* kNN
+* SVM
 
-# NumPy Review
-
-*
-# Decision Trees
-
-# kNN
-
-# SVM
-
-# kMeans
-
-# PCA
-
-# Resources
+## Unsupervised Learning
+* kMeans
+* PCA
 
 # Conclusion
+
+* Resources
