@@ -7,6 +7,12 @@ email: jskonhovd@gatech.edu
 
 # Introduction
 
+## Who am I?
+* Jeffrey Skonhovd
+* Works at FTN Financial
+* Twitter: @jskonhovd
+* Github: jskonhovd
+
 ## Overview
 * What is Machine Learning?
   * Machine Learning is the study of computer algorithms that improve automatically through experience.
@@ -18,10 +24,24 @@ email: jskonhovd@gatech.edu
   * scikit-learn
 
 # Machine Learning
-
-## Supervised Learning: Things We need to know!!!
+## Types
+* Supervised Learning
+  * Supervised Learning is ...
+* Unsupervised Learning
+  * Unsupervised Learning is ...
+* Reenforcement Learning
+  * Reenforcement Learning is ...
+  
+## Some Boring, but important Definitions.
 * Inductive Bias
 * Crossvalidation
+* Overfitting
+
+## Scikit-learn
+* Scikit-learn is a set of simple and efficient tools for data mining and data analysis.
+* [http://scikit-learn.org/](http://scikit-learn.org/)
+
+# Supervised Learning: Scikit-learn
 
 ## Decision Trees
 * Inductive Bias
@@ -35,9 +55,10 @@ email: jskonhovd@gatech.edu
 * Inductive Bias
   *
   
-## Unsupervised Learning
-* kMeans
-* PCA
+# Unsupervised Learning: Scikit-learn
+## kMeans
+
+## PCA
 
 # Conclusion
 
