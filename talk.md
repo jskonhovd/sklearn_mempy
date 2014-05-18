@@ -38,27 +38,43 @@ email: jskonhovd@gatech.edu
   * Occam's Razor assumes that the hypotheses with the fewest assumptions should be selected.
 * Cross-validation
   * The basic idea of Cross-validation to leave out some of the data when fitting the model.
-* Overfitting
-  *
 
 ## Scikit-learn
 * Scikit-learn is a set of simple and efficient tools for data mining and data analysis.
+* Uses Python!!!
 * [http://scikit-learn.org/](http://scikit-learn.org/)
 
 # Supervised Learning: Scikit-learn
 
 ## Decision Trees
-* Inductive Bias
-  *
-  
+* Decision Tree learning is a method for approximating discrete-valued target functions, in which the learned function is represented a decision tree.
+* Maximize Information Gain
+  * Information Gain measures how well a given attribute separates the training examples according to their target classifcation.
+
+## Decision Trees: Example
+`import numpy as np
+import pylab as pl
+
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+
+# Parameters
+
+
+# Load data
+iris = load_iris()
+clf = DecisionTreeClassifier()
+X = iris.data[:, [1, 2]]
+y = iris.target
+clf = clf.fit(X, y)
+plotCustom(X, y, [1, 2], clf)`
+
 ## kNN
-* Inductive Bias
-  *
   
 ## SVM
-* Inductive Bias
-  *
-  
+
+
+
 # Unsupervised Learning: Scikit-learn
 ## kMeans
 
