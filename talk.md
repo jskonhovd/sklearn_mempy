@@ -65,7 +65,21 @@ email: jskonhovd@gatech.edu
     clf = clf.fit(X, y)
     plotCustom(X, y, [1, 2], clf)`
 
-## kNN
+## kNN: Example
+    from sklearn import neighbors
+    import numpy as np
+    import pylab as pl
+    from sklearn import cross_validation
+    from sklearn.datasets import load_iris
+
+    iris = load_iris()
+
+    X = iris.data[:, [1, 2]]
+    y = iris.target
+
+    clf = neighbors.KNeighborsClassifier(3, 'distance')
+
+    plotCustom(X, y, [1,2], clf)
   
 ## SVM
 
