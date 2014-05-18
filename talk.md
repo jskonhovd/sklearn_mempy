@@ -19,11 +19,22 @@ email: jskonhovd@gatech.edu
 
 # Machine Learning
 
-## Supervised Learning
-* Decision Trees
-* kNN
-* SVM
+## Supervised Learning: Things We need to know!!!
+* Inductive Bias
+* Crossvalidation
 
+## Decision Trees
+* Inductive Bias
+  *
+  
+## kNN
+* Inductive Bias
+  *
+  
+## SVM
+* Inductive Bias
+  *
+  
 ## Unsupervised Learning
 * kMeans
 * PCA
