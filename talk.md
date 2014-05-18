@@ -52,22 +52,18 @@ email: jskonhovd@gatech.edu
   * Information Gain measures how well a given attribute separates the training examples according to their target classifcation.
 
 ## Decision Trees: Example
-`import numpy as np
-import pylab as pl
-
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-
-# Parameters
-
-
-# Load data
-iris = load_iris()
-clf = DecisionTreeClassifier()
-X = iris.data[:, [1, 2]]
-y = iris.target
-clf = clf.fit(X, y)
-plotCustom(X, y, [1, 2], clf)`
+    import numpy as np
+    import pylab as pl
+    from sklearn.datasets import load_iris
+    from sklearn.tree import DecisionTreeClassifier
+    # Parameters
+    # Load data
+    iris = load_iris()
+    clf = DecisionTreeClassifier()
+    X = iris.data[:, [1, 2]]
+    y = iris.target
+    clf = clf.fit(X, y)
+    plotCustom(X, y, [1, 2], clf)`
 
 ## kNN
   
