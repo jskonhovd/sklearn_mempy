@@ -34,8 +34,12 @@ email: jskonhovd@gatech.edu
   
 ## Some Boring, but important Definitions.
 * Inductive Bias
-* Crossvalidation
+  * The inductive bias of a learning algorithm is the set of assumptions that the learner uses to predict outputs given inputs that it has not encountered.
+  * Occam's Razor assumes that the hypotheses with the fewest assumptions should be selected.
+* Cross-validation
+  * The basic idea of Cross-validation to leave out some of the data when fitting the model.
 * Overfitting
+  *
 
 ## Scikit-learn
 * Scikit-learn is a set of simple and efficient tools for data mining and data analysis.
