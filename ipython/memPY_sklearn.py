@@ -7,7 +7,7 @@
 
 # <markdowncell>
 
-# DTrees
+# Decision Trees
 
 # <codecell>
 
@@ -15,7 +15,7 @@
 
 # <codecell>
 
-def plotDTrees(X,y, pair):        
+def plotCustom(X,y, pair, Classifier, title="Custom Plot"):        
 
     # Shuffle
     idx = np.arange(X.shape[0])
@@ -34,7 +34,7 @@ def plotDTrees(X,y, pair):
     X = (X - mean) / std
     
     # Train
-    clf = DecisionTreeClassifier().fit(X, y)
+    clf = Classifier.fit(X, y)
     
     # Plot the decision boundary
     #pl.subplot(2, 3, pairidx + 1)
@@ -59,7 +59,7 @@ def plotDTrees(X,y, pair):
                    cmap=pl.cm.Paired)
     
     pl.axis("tight")
-    pl.suptitle("Decision surface of a decision tree using paired features")
+    pl.suptitle(title)
     pl.legend()
     pl.show()
     
@@ -77,10 +77,11 @@ from sklearn.tree import DecisionTreeClassifier
 
 # Load data
 iris = load_iris()
+clf = DecisionTreeClassifier()
 X = iris.data[:, [1, 2]]
 y = iris.target
-
-plotDTrees(X, y, [1, 2])
+clf = clf.fit(X, y)
+plotCustom(X, y, [1, 2], clf)
     
 
 # <codecell>
@@ -101,6 +102,46 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(iris.data, 
 clf = clf.fit(X_train, y_train)
 
 print clf.score(X_test, y_test)
+
+# <markdowncell>
+
+# KNN
+
+# <codecell>
+
+from sklearn import neighbors
+import numpy as np
+import pylab as pl
+from sklearn import cross_validation
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X_train, X_test, y_train, y_test = cross_validation.train_test_split(iris.data, iris.target, test_size=0.9, random_state=0)
+
+clf = neighbors.KNeighborsClassifier(3, 'distance')
+
+clf = clf.fit(X_train, y_train)
+
+
+print clf.score(X_test, y_test)
+
+# <codecell>
+
+from sklearn import neighbors
+import numpy as np
+import pylab as pl
+from sklearn import cross_validation
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [1, 2]]
+y = iris.target
+
+clf = neighbors.KNeighborsClassifier(3, 'distance')
+
+plotCustom(X, y, [1,2], clf)
 
 # <codecell>
 
