@@ -4,14 +4,7 @@ author: Jeffrey Skonhovd
 email: jskonhovd@gatech.edu
 ---
 
-
 # Introduction
-
-## Who am I?
-* Jeffrey Skonhovd
-* Works at FTN Financial
-* Twitter: @jskonhovd
-* Github: jskonhovd
 
 ## Overview
 * What is Machine Learning?
@@ -31,6 +24,7 @@ email: jskonhovd@gatech.edu
 	* Unsupervised Learning is the tasks of finding hidden structure in unlabeled data.
 * Reenforcement Learning
 	* Reenforcement Learning is concerned with how agents ought to take actions in an environment as to maximize some notion of cumulative reward.
+	* Trade off between exploitation and exploration.
   
 ## Some Boring, but important Definitions.
 * Inductive Bias
@@ -44,12 +38,12 @@ email: jskonhovd@gatech.edu
 * Uses Python!!!
 * [http://scikit-learn.org/](http://scikit-learn.org/)
 
-# Supervised Learning: Scikit-learn
+# Supervised Learning
 
 ## Decision Trees
 * Decision Tree learning is a method for approximating discrete-valued target functions, in which the learned function is represented a decision tree.
 * Maximize Information Gain
-	* Information Gain measures how well a given attribute separates the training examples according to their target classifcation.
+	* Information Gain measures how well a given attribute separates the training examples according to their target classification.
 
 ## Decision Trees: Example
     import numpy as np
@@ -65,6 +59,11 @@ email: jskonhovd@gatech.edu
     clf = clf.fit(X, y)
     plotCustom(X, y, [1, 2], clf)`
 
+## kNN
+* K-Nearest neighbor algorithm
+    * kNN is a example of a instance based learning algorithm.
+    * Output is classified by a majority vote of its neighbors, where the class that is most common of a instances K neighbors.
+
 ## kNN: Example
     from sklearn import neighbors
     import numpy as np
@@ -76,8 +75,13 @@ email: jskonhovd@gatech.edu
     y = iris.target
     clf = neighbors.KNeighborsClassifier(3, 'distance')
     plotCustom(X, y, [1,2], clf)
-  
+
 ## SVM
+* Support Vector Machines
+    * SVM's are a class of linear classifiers.
+* Kernel Trick
+
+## SVM: Example
     from sklearn import svm
     import numpy as np
     import pylab as pl
@@ -91,22 +95,31 @@ email: jskonhovd@gatech.edu
     plotCustom(X, y, [1,2], rbf_svc)
 
 
-# Unsupervised Learning: Scikit-learn
-
+# Unsupervised Learning
 ## kMeans
+* The k-means algorithm clusters data by trying to separate samples into n groups of equal variance.
+* The name is derived from the representing k clusters by the mean of its points.
+* K-Means works well with numerical attributes.
+
+## kMeans: Example
 	import numpy as np
 	import pylab as pl
 	from sklearn.cluster import KMeans
 	from sklearn.decomposition import PCA
 	from sklearn.datasets import load_iris
 	iris = load_iris()
-	X = iris.data[:, [2, 3]]
+	X = iris.data[:, [1, 2]]
 	y = iris.target
 	n_digits = len(np.unique(y))
 	kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
 	kmeans.fit(X)
-	kmeans_plots(X,y,[2, 3],kmeans)
+	kmeans_plots(X,y,[1, 2],kmeans)
 
 # Conclusion
-
-* Resources
+## Resources
+* MOOCS
+	* [Udacity](https://www.udacity.com/course/ud675)
+	* [Coursera](https://www.coursera.org/course/ml)
+	* [Data Mining with Weka](https://weka.waikato.ac.nz/dataminingwithweka) 
+* Text
+	* [Machine Learning, Mitchell](http://www.cs.cmu.edu/~tom/mlbook.html)

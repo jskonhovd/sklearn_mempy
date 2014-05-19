@@ -1,21 +1,5 @@
 \section{Introduction}\label{introduction}
 
-\begin{frame}{Who am I?}
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Jeffrey Skonhovd
-\item
-  Works at FTN Financial
-\item
-  Twitter: @jskonhovd
-\item
-  Github: jskonhovd
-\end{itemize}
-
-\end{frame}
-
 \begin{frame}{Overview}
 
 \begin{itemize}
@@ -86,6 +70,8 @@
     Reenforcement Learning is concerned with how agents ought to take
     actions in an environment as to maximize some notion of cumulative
     reward.
+  \item
+    Trade off between exploitation and exploration.
   \end{itemize}
 \end{itemize}
 
@@ -136,8 +122,7 @@
 
 \end{frame}
 
-\section{Supervised Learning:
-Scikit-learn}\label{supervised-learning-scikit-learn}
+\section{Supervised Learning}\label{supervised-learning}
 
 \begin{frame}{Decision Trees}
 
@@ -154,7 +139,7 @@ Scikit-learn}\label{supervised-learning-scikit-learn}
   \itemsep1pt\parskip0pt\parsep0pt
   \item
     Information Gain measures how well a given attribute separates the
-    training examples according to their target classifcation.
+    training examples according to their target classification.
   \end{itemize}
 \end{itemize}
 
@@ -179,6 +164,25 @@ plotCustom(X, y, [1, 2], clf)`
 
 \end{frame}
 
+\begin{frame}{kNN}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  K-Nearest neighbor algorithm
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    kNN is a example of a instance based learning algorithm.
+  \item
+    Output is classified by a majority vote of its neighbors, where the
+    class that is most common of a instances K neighbors.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}[fragile]{kNN: Example}
 
 \begin{verbatim}
@@ -196,7 +200,25 @@ plotCustom(X, y, [1,2], clf)
 
 \end{frame}
 
-\begin{frame}[fragile]{SVM}
+\begin{frame}{SVM}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Support Vector Machines
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    SVM's are a class of linear classifiers.
+  \end{itemize}
+\item
+  Kernel Trick
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{SVM: Example}
 
 \begin{verbatim}
 from sklearn import svm
@@ -214,10 +236,25 @@ plotCustom(X, y, [1,2], rbf_svc)
 
 \end{frame}
 
-\section{Unsupervised Learning:
-Scikit-learn}\label{unsupervised-learning-scikit-learn}
+\section{Unsupervised Learning}\label{unsupervised-learning}
 
-\begin{frame}[fragile]{kMeans}
+\begin{frame}{kMeans}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  The k-means algorithm clusters data by trying to separate samples into
+  n groups of equal variance.
+\item
+  The name is derived from the representing k clusters by the mean of
+  its points.
+\item
+  K-Means works well with numerical attributes.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{kMeans: Example}
 
 \begin{verbatim}
 import numpy as np
@@ -226,20 +263,44 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.datasets import load_iris
 iris = load_iris()
-X = iris.data[:, [2, 3]]
+X = iris.data[:, [1, 2]]
 y = iris.target
 n_digits = len(np.unique(y))
 kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
 kmeans.fit(X)
-kmeans_plots(X,y,[2, 3],kmeans)
+kmeans_plots(X,y,[1, 2],kmeans)
 \end{verbatim}
 
 \end{frame}
 
 \section{Conclusion}\label{conclusion}
 
+\begin{frame}{Resources}
+
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  Resources
+  MOOCS
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \href{https://www.udacity.com/course/ud675}{Udacity}
+  \item
+    \href{https://www.coursera.org/course/ml}{Coursera}
+  \item
+    \href{https://weka.waikato.ac.nz/dataminingwithweka}{Data Mining
+    with Weka}
+  \end{itemize}
+\item
+  Text
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \href{http://www.cs.cmu.edu/~tom/mlbook.html}{Machine Learning,
+    Mitchell}
+  \end{itemize}
 \end{itemize}
+
+\end{frame}

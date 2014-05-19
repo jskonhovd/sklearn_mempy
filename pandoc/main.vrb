@@ -1,4 +1,4 @@
-\frametitle{kMeans}
+\frametitle{kMeans: Example}
 
 \begin{verbatim}
 import numpy as np
@@ -7,11 +7,11 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.datasets import load_iris
 iris = load_iris()
-X = iris.data[:, [2, 3]]
+X = iris.data[:, [1, 2]]
 y = iris.target
 n_digits = len(np.unique(y))
 kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
 kmeans.fit(X)
-kmeans_plots(X,y,[2, 3],kmeans)
+kmeans_plots(X,y,[1, 2],kmeans)
 \end{verbatim}
 

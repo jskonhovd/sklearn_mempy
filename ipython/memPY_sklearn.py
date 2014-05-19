@@ -5,10 +5,6 @@
 
 # #MEMpy - Introduction to Machine Learning
 
-# <markdowncell>
-
-# Decision Trees
-
 # <codecell>
 
 %pylab inline
@@ -21,30 +17,19 @@ def plotCustom(X,y, pair, Classifier, title="Custom Plot"):
     idx = np.arange(X.shape[0])
     np.random.seed(13)
     np.random.shuffle(idx)
-    X = X[idx]
-    y = y[idx]
+    #X = X[idx]
+    #y = y[idx]
     
     n_classes = 3
     plot_colors = "bry"
     plot_step = 0.02
-    
-    # Standardize
-    mean = X.mean(axis=0)
-    std = X.std(axis=0)
-    X = (X - mean) / std
-    
-    # Train
-    clf = Classifier.fit(X, y)
-    
-    # Plot the decision boundary
-    #pl.subplot(2, 3, pairidx + 1)
     
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.arange(x_min, x_max, plot_step),
                          np.arange(y_min, y_max, plot_step))
     
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Classifier.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
     cs = pl.contourf(xx, yy, Z, cmap=pl.cm.Paired)
     
@@ -66,23 +51,52 @@ def plotCustom(X,y, pair, Classifier, title="Custom Plot"):
 
 # <codecell>
 
-import numpy as np
-import pylab as pl
-
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-
-# Parameters
-
-
-# Load data
-iris = load_iris()
-clf = DecisionTreeClassifier()
-X = iris.data[:, [1, 2]]
-y = iris.target
-clf = clf.fit(X, y)
-plotCustom(X, y, [1, 2], clf)
+def kmeans_plots(X, y, pair, Classifier, title="Custom plot"):
+   
+    idx = np.arange(X.shape[0])
+    n_classes = 3
+    plot_colors = "bry"
+    plot_step = 0.02
     
+
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    
+    h=.02
+    
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+ 
+    # Obtain labels for each point in mesh. Use last trained model.
+    
+    # Put the result into a color plot
+    Z = Classifier.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    cs = pl.contourf(xx, yy, Z, cmap=pl.cm.Paired)
+    
+    pl.xlabel(iris.feature_names[pair[0]])
+    pl.ylabel(iris.feature_names[pair[1]])
+    pl.axis("tight")
+    
+    # Plot the training points
+    for i, color in zip(range(n_classes), plot_colors):
+        idx = np.where(y == i)
+        pl.scatter(X[idx, 0], X[idx, 1], c=color, label=iris.target_names[i],
+                   cmap=pl.cm.Paired)
+    centroids = Classifier.cluster_centers_
+    pl.scatter(centroids[:, 0], centroids[:, 1],
+           marker='x', s=169, linewidths=3,
+           color='w', zorder=10)
+    pl.axis("tight")
+    pl.suptitle(title)
+    pl.legend()
+    pl.show()
+
+# <markdowncell>
+
+# ## Decision Trees
+# * Decision Tree learning is a method for approximating discrete-valued target functions, in which the learned function is represented a decision tree.
+# * Maximize Information Gain
+# 	* Information Gain measures how well a given attribute separates the training examples according to their target classification.
 
 # <codecell>
 
@@ -102,10 +116,35 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(iris.data, 
 clf = clf.fit(X_train, y_train)
 
 print clf.score(X_test, y_test)
+print clf.predict(X_test)
+print y_test
+
+# <codecell>
+
+import numpy as np
+import pylab as pl
+
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+
+# Parameters
+
+
+# Load data
+iris = load_iris()
+clf = DecisionTreeClassifier()
+X = iris.data[:, [1, 2]]
+y = iris.target
+clf = clf.fit(X, y)
+plotCustom(X, y, [1, 2], clf)
+    
 
 # <markdowncell>
 
-# KNN
+# ## kNN
+# * K-Nearest neighbor algorithm
+#     * kNN is a example of a instance based learning algorithm.
+#     * Output is classified by a majority vote of its neighbors, where the class that is most common of a instances K neighbors.
 
 # <codecell>
 
@@ -139,13 +178,16 @@ iris = load_iris()
 X = iris.data[:, [1, 2]]
 y = iris.target
 
-clf = neighbors.KNeighborsClassifier(20, 'distance')
-
+clf = neighbors.KNeighborsClassifier(1, 'distance')
+clf = clf.fit(X,y)
 plotCustom(X, y, [1,2], clf)
 
 # <markdowncell>
 
-# SVM
+# ## SVM
+# * Support Vector Machines
+#     *SVM's are a class of linear classifiers.
+# * Kernel Trick
 
 # <codecell>
 
@@ -164,15 +206,41 @@ clf = svm.SVC(kernel='linear', C=C)
 rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C)
 poly_svc = svm.SVC(kernel='poly', degree=3, C=C)
 lin_svc = svm.LinearSVC(C=C)
-
+clf.fit(X,y)
+rbf_svc.fit(X,y)
+poly_svc.fit(X,y)
+lin_svc.fit(X,y)
 plotCustom(X, y, [1,2], rbf_svc)
 plotCustom(X, y, [1,2], poly_svc)
 plotCustom(X, y, [1,2], lin_svc)
 
 # <markdowncell>
 
-# KMeans
+# ## KMeans
+# * The k-means algorithm clusters data by trying to separate samples into n groups of equal variance.
+# * The name is derived from the representing k clusters by the mean of its points
+# * K-Means works well with numerical attributes.
 
 # <codecell>
 
+from time import time
+import numpy as np
+import pylab as pl
+
+from sklearn import metrics
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_digits
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [2, 3]]
+y = iris.target
+n_digits = len(np.unique(y))
+kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
+kmeans.fit(X)
+
+kmeans_plots(X,y,[2, 3],kmeans)
 

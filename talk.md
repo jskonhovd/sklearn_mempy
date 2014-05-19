@@ -78,8 +78,9 @@ email: jskonhovd@gatech.edu
 
 ## SVM
 * Support Vector Machines
-    *SVM's are a class of linear classifiers.
+    * SVM's are a class of linear classifiers.
 * Kernel Trick
+
 ## SVM: Example
     from sklearn import svm
     import numpy as np
@@ -97,7 +98,7 @@ email: jskonhovd@gatech.edu
 # Unsupervised Learning
 ## kMeans
 * The k-means algorithm clusters data by trying to separate samples into n groups of equal variance.
-* The name is derived from the representing k clusters by the mean of its points
+* The name is derived from the representing k clusters by the mean of its points.
 * K-Means works well with numerical attributes.
 
 ## kMeans: Example
