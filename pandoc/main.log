@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.4)  18 MAY 2014 19:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.4)  18 MAY 2014 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -848,27 +848,6 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 LaTeX Info: Redefining \includegraphics on input line 11.
  (./main.nav)
-! Missing $ inserted.
-<inserted text> 
-                $
-l.14 \end{frame}
-                
-? 
-LaTeX Font Info:    Try loading font information for U+msa on input line 14.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 14.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-! Missing $ inserted.
-<inserted text> 
-                $
-l.14 \end{frame}
-                
-? 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 14.
@@ -886,7 +865,17 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 ] [6
 
-] [7
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 137.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 137.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [7
 
 ] [8
 
@@ -899,7 +888,7 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 \openout4 = `main.vrb'.
 
  (./main.vrb
-Overfull \hbox (2.44044pt too wide) in paragraph at lines 18--18
+Overfull \hbox (2.44044pt too wide) in paragraph at lines 14--14
 []\OT1/cmtt/m/n/10.95 clf = neighbors.KNeighborsClassifier(3, 'distance')[] 
  []
 
@@ -908,26 +897,18 @@ Overfull \hbox (2.44044pt too wide) in paragraph at lines 18--18
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb)
-Overfull \vbox (97.91481pt too high) detected at line 202
- []
-
-[11
+ (./main.vrb) [11
 
 ]
 \openout4 = `main.vrb'.
 
  (./main.vrb
-Overfull \hbox (82.92207pt too wide) in paragraph at lines 21--21
+Overfull \hbox (82.92207pt too wide) in paragraph at lines 16--16
 []\OT1/cmtt/m/n/10.95 kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_
 init=10)[] 
  []
 
-)
-Overfull \vbox (29.91478pt too high) detected at line 229
- []
-
-[12
+) [12
 
 ]) [13
 
@@ -956,23 +937,21 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 23.
  ) 
 Here is how much of TeX's memory you used:
- 15761 strings out of 493304
- 293757 string characters out of 6139872
- 369898 words of memory out of 5000000
- 18793 multiletter control sequences out of 15000+600000
+ 15760 strings out of 493304
+ 293741 string characters out of 6139872
+ 369892 words of memory out of 5000000
+ 18792 multiletter control sequences out of 15000+600000
  11037 words of font info for 41 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,16n,57p,412b,537s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (13 pages, 82816 bytes).
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (13 pages, 68614 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
+ 218 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
  36 named destinations out of 1000 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
