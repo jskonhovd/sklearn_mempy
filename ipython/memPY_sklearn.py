@@ -127,9 +127,6 @@ import pylab as pl
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 
-# Parameters
-
-
 # Load data
 iris = load_iris()
 clf = DecisionTreeClassifier()
@@ -138,6 +135,43 @@ y = iris.target
 clf = clf.fit(X, y)
 plotCustom(X, y, [1, 2], clf)
     
+
+# <codecell>
+
+import sys
+from numpy import *
+import pylab as pl
+from sklearn.utils import shuffle
+from sklearn.metrics import mean_squared_error
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import datasets
+
+x_libsvm,y_libsvm = datasets.load_svmlight_file('spambase.libsvm')
+X, y = shuffle(x_libsvm.todense(), y_libsvm)
+offset = int(0.7*len(X))
+X_train, y_train = X[:offset], y[:offset]
+X_test, y_test = X[offset:], y[offset:]
+
+sizes = linspace(1, len(X_train), 20)
+train_err = zeros(len(sizes))
+test_err = zeros(len(sizes))
+
+for i, s in enumerate(sizes):
+	clf = DecisionTreeClassifier(max_depth=3)
+	clf.fit(X_train[:s], y_train[:s])
+
+	train_err[i] = mean_squared_error(y_train[:s], clf.predict(X_train[:s]))
+	test_err[i] = mean_squared_error(y_test, clf.predict(X_test))
+
+pl.figure()
+pl.title('DT: Performance vs Training Size')
+pl.plot(sizes, test_err, lw=2, label = 'test error')
+pl.plot(sizes, train_err, lw=2, label = 'training error')
+pl.legend()
+pl.xlabel('Training Size')
+pl.ylabel('RMS Error')
+pl.show()
 
 # <markdowncell>
 
@@ -182,6 +216,44 @@ clf = neighbors.KNeighborsClassifier(1, 'distance')
 clf = clf.fit(X,y)
 plotCustom(X, y, [1,2], clf)
 
+# <codecell>
+
+import sys
+from numpy import *
+import pylab as pl
+from sklearn.utils import shuffle
+from sklearn.metrics import mean_squared_error
+from sklearn import datasets
+from sklearn import neighbors
+
+
+x_libsvm,y_libsvm = datasets.load_svmlight_file('spambase.libsvm')
+X, y = shuffle(x_libsvm.todense(), y_libsvm)
+offset = int(0.7*len(X))
+X_train, y_train = X[:offset], y[:offset]
+X_test, y_test = X[offset:], y[offset:]
+
+sizes = linspace(1, len(X_train), 20)
+train_err = zeros(len(sizes))
+test_err = zeros(len(sizes))
+
+for i, s in enumerate(sizes):
+	clf = neighbors.KNeighborsClassifier(10, 'distance')
+	clf.fit(X_train[:s], y_train[:s])
+
+	train_err[i] = mean_squared_error(y_train[:s], clf.predict(X_train[:s]))
+	test_err[i] = mean_squared_error(y_test, clf.predict(X_test))
+
+pl.figure()
+pl.title('2-NN: Performance vs Training Size')
+pl.plot(sizes, test_err, lw=2, label = 'test error')
+pl.plot(sizes, train_err, lw=2, label = 'training error')
+pl.legend()
+pl.xlabel('Training Size')
+pl.ylabel('RMS Error')
+pl.show()
+
+
 # <markdowncell>
 
 # ## SVM
@@ -214,11 +286,51 @@ plotCustom(X, y, [1,2], rbf_svc)
 plotCustom(X, y, [1,2], poly_svc)
 plotCustom(X, y, [1,2], lin_svc)
 
+# <codecell>
+
+"""
+Plots Learning curves for SVM
+"""
+
+import sys
+from numpy import *
+import pylab as pl
+from sklearn.utils import shuffle
+from sklearn.metrics import mean_squared_error
+from sklearn import datasets
+from sklearn.svm import SVR
+
+x_libsvm,y_libsvm = datasets.load_svmlight_file('spambase.libsvm')
+X, y = shuffle(x_libsvm.todense(), y_libsvm)
+offset = int(0.7*len(X))
+X_train, y_train = X[:offset], y[:offset]
+X_test, y_test = X[offset:], y[offset:]
+
+sizes = linspace(1, len(X_train), 20)
+train_err = zeros(len(sizes))
+test_err = zeros(len(sizes))
+
+for i, s in enumerate(sizes):
+	clf = SVR(kernel='rbf', degree=3)
+	clf.fit(X_train[:s], y_train[:s])
+
+	train_err[i] = mean_squared_error(y_train[:s], clf.predict(X_train[:s]))
+	test_err[i] = mean_squared_error(y_test, clf.predict(X_test))
+
+pl.figure()
+pl.title('SVM: Performance vs Training Size')
+pl.plot(sizes, test_err, lw=2, label = 'test error')
+pl.plot(sizes, train_err, lw=2, label = 'training error')
+pl.legend()
+pl.xlabel('Training Size')
+pl.ylabel('RMS Error')
+pl.show()
+
 # <markdowncell>
 
 # ## KMeans
 # * The k-means algorithm clusters data by trying to separate samples into n groups of equal variance.
-# * The name is derived from the representing k clusters by the mean of its points
+# * The name is derived from the representing k clusters by the mean of its points.
 # * K-Means works well with numerical attributes.
 
 # <codecell>
@@ -243,4 +355,7 @@ kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
 kmeans.fit(X)
 
 kmeans_plots(X,y,[2, 3],kmeans)
+
+# <codecell>
+
 
