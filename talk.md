@@ -24,6 +24,7 @@ email: jskonhovd@gatech.edu
 	* Unsupervised Learning is the tasks of finding hidden structure in unlabeled data.
 * Reenforcement Learning
 	* Reenforcement Learning is concerned with how agents ought to take actions in an environment as to maximize some notion of cumulative reward.
+	* Trade off between exploitation and exploration.
   
 ## Some Boring, but important Definitions.
 * Inductive Bias
@@ -59,7 +60,9 @@ email: jskonhovd@gatech.edu
     plotCustom(X, y, [1, 2], clf)`
 
 ## kNN
-
+* K-Nearest neighbor algorithm
+    * kNN is a example of a instance based learning algorithm.
+    * Output is classified by a majority vote of its neighbors, where the class that is most common of a instances K neighbors.
 
 ## kNN: Example
     from sklearn import neighbors
@@ -74,7 +77,9 @@ email: jskonhovd@gatech.edu
     plotCustom(X, y, [1,2], clf)
 
 ## SVM
-
+* Support Vector Machines
+    *SVM's are a class of linear classifiers.
+* Kernel Trick
 ## SVM: Example
     from sklearn import svm
     import numpy as np
@@ -91,6 +96,9 @@ email: jskonhovd@gatech.edu
 
 # Unsupervised Learning
 ## kMeans
+* The k-means algorithm clusters data by trying to separate samples into n groups of equal variance.
+* The name is derived from the representing k clusters by the mean of its points
+* K-Means works well with numerical attributes.
 
 ## kMeans: Example
 	import numpy as np
