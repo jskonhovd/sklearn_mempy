@@ -15,13 +15,13 @@ email: jskonhovd@gatech.edu
 
 ## Overview
 * What is Machine Learning?
-  * Machine Learning is the study of computer algorithms that improve automatically through experience.
+	* Machine Learning is the study of computer algorithms that improve automatically through experience.
 * How should I go about learning Machine Learning?
-  * MOOCs
-  * Don't get caught up in the implementations. 
+	* MOOCs
+	* Don't get caught up in the implementations. 
 * Tools
-  * WEKA
-  * scikit-learn
+	* WEKA
+	* scikit-learn
 
 # Machine Learning
 ## Types

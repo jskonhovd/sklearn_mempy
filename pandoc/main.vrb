@@ -1,0 +1,22 @@
+\frametitle{kMeans}
+
+\begin{verbatim}
+from time import time
+import numpy as np
+import pylab as pl
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_digits
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [2, 3]]
+y = iris.target
+n_digits = len(np.unique(y))
+kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
+kmeans.fit(X)
+kmeans_plots(X,y,[2, 3],kmeans)
+\end{verbatim}
+

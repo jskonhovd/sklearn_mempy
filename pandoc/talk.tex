@@ -1,0 +1,237 @@
+\section{Introduction}\label{introduction}
+
+\begin{frame}{Who am I?}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Jeffrey Skonhovd
+\item
+  Works at FTN Financial
+\item
+  Twitter: @jskonhovd
+\item
+  Github: jskonhovd
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Overview}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  What is Machine Learning?
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Machine Learning is the study of computer algorithms that improve
+    automatically through experience.
+  \end{itemize}
+\item
+  How should I go about learning Machine Learning?
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    MOOCs
+  \item
+    Don't get caught up in the implementations.
+  \end{itemize}
+\item
+  Tools
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    WEKA
+  \item
+    scikit-learn
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\section{Machine Learning}\label{machine-learning}
+
+\begin{frame}{Types}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Supervised Learning
+\item
+  Supervised Learning is \ldots{}
+\item
+  Unsupervised Learning
+\item
+  Unsupervised Learning is \ldots{}
+\item
+  Reenforcement Learning
+\item
+  Reenforcement Learning is \ldots{}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Some Boring, but important Definitions.}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Inductive Bias
+\item
+  The inductive bias of a learning algorithm is the set of assumptions
+  that the learner uses to predict outputs given inputs that it has not
+  encountered.
+\item
+  Occam's Razor assumes that the hypotheses with the fewest assumptions
+  should be selected.
+\item
+  Cross-validation
+\item
+  The basic idea of Cross-validation to leave out some of the data when
+  fitting the model.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Scikit-learn}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Scikit-learn is a set of simple and efficient tools for data mining
+  and data analysis.
+\item
+  Uses Python!!!
+\item
+  \url{http://scikit-learn.org/}
+\end{itemize}
+
+\end{frame}
+
+\section{Supervised Learning:
+Scikit-learn}\label{supervised-learning-scikit-learn}
+
+\begin{frame}{Decision Trees}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Decision Tree learning is a method for approximating discrete-valued
+  target functions, in which the learned function is represented a
+  decision tree.
+\item
+  Maximize Information Gain
+\item
+  Information Gain measures how well a given attribute separates the
+  training examples according to their target classifcation.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Decision Trees: Example}
+
+\begin{verbatim}
+import numpy as np
+import pylab as pl
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier
+# Parameters
+# Load data
+iris = load_iris()
+clf = DecisionTreeClassifier()
+X = iris.data[:, [1, 2]]
+y = iris.target
+clf = clf.fit(X, y)
+plotCustom(X, y, [1, 2], clf)`
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{kNN: Example}
+
+\begin{verbatim}
+from sklearn import neighbors
+import numpy as np
+import pylab as pl
+from sklearn import cross_validation
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [1, 2]]
+y = iris.target
+
+clf = neighbors.KNeighborsClassifier(3, 'distance')
+
+plotCustom(X, y, [1,2], clf)
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{SVM}
+
+\begin{verbatim}
+from sklearn import svm
+import numpy as np
+import pylab as pl
+from sklearn import cross_validation
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [1, 2]]
+y = iris.target
+C = 1.0
+clf = svm.SVC(kernel='linear', C=C)
+rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C)
+poly_svc = svm.SVC(kernel='poly', degree=3, C=C)
+lin_svc = svm.LinearSVC(C=C)
+clf.fit(X,y)
+rbf_svc.fit(X,y)
+poly_svc.fit(X,y)
+lin_svc.fit(X,y)
+plotCustom(X, y, [1,2], rbf_svc)
+plotCustom(X, y, [1,2], poly_svc)
+plotCustom(X, y, [1,2], lin_svc)
+\end{verbatim}
+
+\end{frame}
+
+\section{Unsupervised Learning:
+Scikit-learn}\label{unsupervised-learning-scikit-learn}
+
+\begin{frame}[fragile]{kMeans}
+
+\begin{verbatim}
+from time import time
+import numpy as np
+import pylab as pl
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_digits
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [2, 3]]
+y = iris.target
+n_digits = len(np.unique(y))
+kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
+kmeans.fit(X)
+kmeans_plots(X,y,[2, 3],kmeans)
+\end{verbatim}
+
+\end{frame}
+
+\section{Conclusion}\label{conclusion}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Resources
+\end{itemize}
