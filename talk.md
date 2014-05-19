@@ -82,13 +82,50 @@ email: jskonhovd@gatech.edu
     plotCustom(X, y, [1,2], clf)
   
 ## SVM
+    from sklearn import svm
+    import numpy as np
+    import pylab as pl
+    from sklearn import cross_validation
+    from sklearn.datasets import load_iris
 
+    iris = load_iris()
+
+    X = iris.data[:, [1, 2]]
+    y = iris.target
+    C = 1.0
+    clf = svm.SVC(kernel='linear', C=C)
+    rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C)
+    poly_svc = svm.SVC(kernel='poly', degree=3, C=C)
+    lin_svc = svm.LinearSVC(C=C)
+    clf.fit(X,y)
+    rbf_svc.fit(X,y)
+    poly_svc.fit(X,y)
+    lin_svc.fit(X,y)
+    plotCustom(X, y, [1,2], rbf_svc)
+    plotCustom(X, y, [1,2], poly_svc)
+    plotCustom(X, y, [1,2], lin_svc)
 
 
 # Unsupervised Learning: Scikit-learn
-## kMeans
 
-## PCA
+## kMeans
+	from time import time
+	import numpy as np
+	import pylab as pl
+	from sklearn.cluster import KMeans
+	from sklearn.datasets import load_digits
+	from sklearn.decomposition import PCA
+	from sklearn.preprocessing import scale
+	from sklearn.datasets import load_iris
+
+	iris = load_iris()
+
+	X = iris.data[:, [2, 3]]
+	y = iris.target
+	n_digits = len(np.unique(y))
+	kmeans = KMeans(init='k-means++', n_clusters=n_digits, n_init=10)
+	kmeans.fit(X)
+	kmeans_plots(X,y,[2, 3],kmeans)
 
 # Conclusion
 

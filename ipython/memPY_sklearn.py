@@ -139,9 +139,39 @@ iris = load_iris()
 X = iris.data[:, [1, 2]]
 y = iris.target
 
-clf = neighbors.KNeighborsClassifier(3, 'distance')
+clf = neighbors.KNeighborsClassifier(20, 'distance')
 
 plotCustom(X, y, [1,2], clf)
+
+# <markdowncell>
+
+# SVM
+
+# <codecell>
+
+from sklearn import svm
+import numpy as np
+import pylab as pl
+from sklearn import cross_validation
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+X = iris.data[:, [1, 2]]
+y = iris.target
+C = 1.0
+clf = svm.SVC(kernel='linear', C=C)
+rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C)
+poly_svc = svm.SVC(kernel='poly', degree=3, C=C)
+lin_svc = svm.LinearSVC(C=C)
+
+plotCustom(X, y, [1,2], rbf_svc)
+plotCustom(X, y, [1,2], poly_svc)
+plotCustom(X, y, [1,2], lin_svc)
+
+# <markdowncell>
+
+# KMeans
 
 # <codecell>
 
